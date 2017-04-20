@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -96,11 +97,17 @@ public class GraphicsProgram extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setUpperItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setUpperItemActionPerformed
-        System.out.println("Set upper item chosen");
+        String input = JOptionPane.showInputDialog(this, "Set upper text", "Upper text", JOptionPane.QUESTION_MESSAGE);
+        if (input != null) {
+            pictureGraphics1.setUpperText(input, getWidth() / 3, getHeight() / 4);
+        }
     }//GEN-LAST:event_setUpperItemActionPerformed
 
     private void setLowerItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setLowerItemActionPerformed
-        System.out.println("Set lower item chosen");
+        String input = JOptionPane.showInputDialog(this, "Set lower text", "Lower text", JOptionPane.QUESTION_MESSAGE);
+        if (input != null) {
+            pictureGraphics1.setLowerText(input, getWidth() / 3, getHeight() - 50);
+        }
     }//GEN-LAST:event_setLowerItemActionPerformed
 
     private void setImageItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setImageItemActionPerformed
