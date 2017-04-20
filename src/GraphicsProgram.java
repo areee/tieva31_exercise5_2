@@ -1,4 +1,12 @@
 
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author ylhaart
@@ -52,6 +60,7 @@ public class GraphicsProgram extends javax.swing.JFrame {
         popup.add(setLowerItem);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Exercise 5.2");
 
         pictureGraphics1.setComponentPopupMenu(popup);
 
@@ -95,7 +104,20 @@ public class GraphicsProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_setLowerItemActionPerformed
 
     private void setImageItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setImageItemActionPerformed
-        System.out.println("Set image chosen");
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "Images", "jpg", "gif", "png");
+        chooser.setFileFilter(filter);
+        chooser.setDialogTitle("Choose a picture file");
+        int r = chooser.showDialog(getContentPane(), "Open");
+        if (r == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+            try {
+                pictureGraphics1.setImage(ImageIO.read(file));
+            } catch (IOException ex) {
+                Logger.getLogger(GraphicsProgram.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_setImageItemActionPerformed
 
     /**

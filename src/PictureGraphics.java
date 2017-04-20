@@ -15,6 +15,7 @@ public class PictureGraphics extends JPanel {
 
     public void setImage(Image i) {
         this.i = i;
+        repaint();
     }
 
     @Override
